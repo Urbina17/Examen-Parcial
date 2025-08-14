@@ -22,3 +22,25 @@ test('el botón se habilita solo cuando los tres campos están completos', () =>
   expect(boton).toBeEnabled();
 });
 
+test('llama a la función onLogin con los valores correctos', () => {
+  const mockLogin = jest.fn();
+  render(<LoginForm onLogin={mockLogin} />);
+  
+  const codigoCliente = screen.getByPlaceholderText(/código de cliente/i);
+  const usuario = screen.getByPlaceholderText(/usuario/i);
+  const contrasena = screen.getByPlaceholderText(/contraseña/i);
+  const boton = screen.getByRole('button', { name: /iniciar sesión/i });
+
+  fireEvent.change(codigoCliente, { target: { value: '123' } });
+  fireEvent.change(usuario, { target: { value: 'diego' } });
+  fireEvent.change(contrasena, { target: { value: 'abc123' } });
+
+  fireEvent.click(boton);
+
+  expect(mockLogin).toHaveBeenCalledWith({
+    codigo: '123',
+    usuario: 'diego',
+    pswd: 'abc123'
+  });
+});
+
