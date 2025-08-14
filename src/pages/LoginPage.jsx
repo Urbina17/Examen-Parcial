@@ -8,11 +8,20 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: '#1e293b',
+        minHeight: '100vh',       
+        display: 'flex',
+        justifyContent: 'center', 
+        alignItems: 'center'      
+      }}
+    >
       <LoginForm onLogin={handleLogin} />
     </div>
   );
 }
 
 export default LoginPage;
+
 

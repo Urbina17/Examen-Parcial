@@ -18,7 +18,7 @@ function LoginForm({ onLogin }) {
 
   return (
     <form className="login-form" onSubmit={manejarSubmit}>
-      <h2 className="login-title">FinTrust - Iniciar sesión</h2>
+      <h2 className="login-title">FinTrust</h2>
       <input
         type="text"
         placeholder="Código de cliente"
